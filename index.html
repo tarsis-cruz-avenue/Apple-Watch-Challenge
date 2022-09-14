@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>Apple Watch Challenge</title>
+        <style>
+            .wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                justify-items: center;
+                width: 500px;
+                margin: 0 auto;
+            }
+
+            #boxes {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                justify-items: center;
+                margin: 0 auto;
+                width: 500px;
+                margin-bottom: 20px;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                cursor: pointer;
+                color: #FFF;
+            }
+
+            #choice {
+                display: flex;
+                justify-content: space-between;
+                justify-items: center;
+                margin-bottom: 20px;
+
+            }
+
+            #options {
+                display: flex;
+                justify-content: space-between;
+                justify-items: center;
+                width: 300px;
+                margin: 0 auto;
+            }
+
+            .button {
+                padding: 15px 40px;
+                border-radius: 40px;
+                color: #FFF;
+                border: none;
+                cursor: pointer;
+            }
+        </style>    
+    </head>
+<body>
+    <div class="wrap">
+        <h3 class="">Chose a box:</h3>
+        <div id="boxes">
+            <div class="box" id="box-1" onclick="boxClicked(this)" style="background-color: blue">Box 1</div>
+            <div class="box" id="box-2" onclick="boxClicked(this)" style="background-color: blue">Box 2</div>
+            <div class="box" id="box-3" onclick="boxClicked(this)" style="background-color: blue">Box 3</div>
+        </div>
+        <div id="choice">
+            <div class="your-choice">
+                <h3>Your choice</h3>
+                <div class="box" id="your-choice"></div>
+            </div>
+            <div class="recommended-choice">
+                <h3>Recommend choice</h3>
+                <div class="box" id="recommended-choice"></div>
+            </div>
+        </div>
+        <div id="options">
+            <button class="button" type="button" style="background-color: gray" onclick="back()">Back</button>
+            <button class="button" type="button" style="background-color: green" onclick="confirm()">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        const boxClicked = (e) => {
+            e.style = 'background-color: red'
+            document.getElementById('choice').style = ''
+            document.getElementById('options').style = ''
+            document.getElementById('your-choice').innerHTML = `<div>Box ${e.id}</div>`
+        }
+
+        const reset = () => {
+            const boxWrap = document.getElementById('boxes')
+            const boxes = boxWrap.children
+            
+            for (var i = 0; i < boxes.length; i++) {
+                console.log(boxes.item(i));
+            }
+
+            document.getElementById('choice').style = 'display: none'
+            document.getElementById('options').style = 'display: none'
+            document.getElementById('your-choice').innerHTML = ''
+        }
+
+        const confirm = () => {
+            console.log('confirm')
+        }
+
+        const back = () => {
+            document.getElementById('choice').style = 'display: none'
+            document.getElementById('options').style = 'display: none'
+        }
+        
+        reset()
+    </script>
+</body>
+
+</html>
